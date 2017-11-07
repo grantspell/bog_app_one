@@ -22,6 +22,16 @@ class Api::CreaturesController < ApplicationController
         render json: @creature
     end
 
+    def update
+        creature_id  = params[:id]
+
+        @creature = Creature.find_by_id(creature_id)
+
+        @creature.update_attributes(creature_params)
+
+        render json: @creature        
+    end
+
     private
 
     def creature_params
